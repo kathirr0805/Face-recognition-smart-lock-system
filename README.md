@@ -24,7 +24,7 @@ This project implements a face recognition-based smart lock system using Python,
    cd face-recognition-smart-lock
 
 
-Install Dependencies:
+##Install Dependencies:
 
 Ensure Python 3.8+ is installed.
 Install required Python packages:pip install opencv-python numpy pyserial
@@ -35,43 +35,44 @@ Install Proteus 8 Professional for simulation.
 Install Virtual Serial Ports Emulator to create virtual COM ports.
 
 
-Configure Files:
+##Configure Files:
 
 Place haarcascade_frontalface_default.xml in the project root (available from OpenCV’s GitHub).
 Ensure a webcam is connected or configure a virtual camera for testing.
 Update serial_port in face_recognition.py if your COM port differs (e.g., COM3).
 
 
-Set Up Proteus Simulation:
+##Set Up Proteus Simulation:
 
 Open the Proteus project file (smart_lock_simulation.pdsprj) in Proteus 8.
 Configure the Raspberry Pi simulation with the provided raspberry_pi_code.py.
 Connect virtual COM ports (e.g., COM3) between the Python script and Proteus.
 
 
-
+##
 Usage
 
-Create Face Dataset:
-
+##Create Face Dataset:
+```bash
 Run face_data_creation.py:python face_data_creation.py
-
+```
 
 Enter a name when prompted, and the script captures 50 grayscale face images, saving them in the datasets folder.
 
 
-Run Face Recognition:
+#Run Face Recognition:
 
 Start the Proteus simulation to initialize the Raspberry Pi and hardware components.
+```bash
 Run face_recognition.py:python face_recognition.py
-
+```
 
 The system processes webcam video, detects faces, and identifies them against the trained dataset.
 For known faces (confidence < 80), it sends '1' to Proteus, displaying "Valid Person Door Open" on the LCD and activating the motor.
 For unknown faces, it sends '0', displays "Unknown Person Door Close," logs the image in unknown_person, and checks PIR sensor for motion.
 
 
-Interact with Hardware:
+##Interact with Hardware:
 
 Press the virtual switch in Proteus to trigger face recognition.
 The buzzer sounds, and the LCD updates based on the recognition result.
@@ -79,6 +80,8 @@ The buzzer sounds, and the LCD updates based on the recognition result.
 
 
 Project Structure
+
+```bash
 face-recognition-smart-lock/
 │
 ├── datasets/                   # Stores face images for training
@@ -90,18 +93,20 @@ face-recognition-smart-lock/
 ├── haarcascade_frontalface_default.xml # Haar Cascade file for face detection
 ├── README.md                   # Project documentation
 └── LICENSE                     # License file
+```
 
-Contributing
+#Contributing
 Contributions are welcome! To contribute:
 
-Fork the repository.
+#Fork the repository.
 Create a feature branch (git checkout -b feature/your-feature).
 Commit changes (git commit -m "Add your feature").
 Push to the branch (git push origin feature/your-feature).
 Open a pull request with a detailed description of your changes.
 
 Please ensure code follows PEP 8 style guidelines and includes comments for clarity.
-License
+
+#License
 This project is licensed under the MIT License. See the LICENSE file for details.
 Acknowledgments
 
